@@ -1,1 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>NigerTax Pro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- TON CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-gray-100 font-sans">
+
+<!-- HEADER -->
+<header class="bg-black text-white flex justify-between items-center p-4">
+  <h1 class="text-xl font-bold">NigerTax Pro</h1>
+  <nav class="space-x-4">
+    <button onclick="showSection('dashboard')">Dashboard</button>
+    <button onclick="showSection('declaration')">Déclaration</button>
+    <button onclick="showSection('simulation')">Simulation</button>
+    <button onclick="showSection('paiement')">Paiement</button>
+    <button onclick="showSection('archives')">Archives</button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="p-8 text-center bg-white shadow">
+  <h2 class="text-3xl font-bold mb-4">
+    Gestion Fiscale Intelligente au Niger
+  </h2>
+  <p class="text-gray-600">
+    Automatisez vos déclarations, calculez vos impôts et payez en toute sécurité.
+  </p>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="p-8 section">
+  <h2 class="text-2xl font-bold mb-4">Tableau de bord</h2>
+
+  <div class="grid md:grid-cols-4 gap-4">
+    <div class="bg-white p-4 shadow rounded">
+      <p>Impôts dus</p>
+      <h3 id="impot" class="text-xl font-bold">0 FCFA</h3>
+    </div>
+
+    <div class="bg-white p-4 shadow rounded">
+      <p>Paiements</p>
+      <h3 id="totalPaiement" class="text-xl font-bold">0 FCFA</h3>
+    </div>
+
+    <div class="bg-white p-4 shadow rounded">
+      <p>Score conformité</p>
+      <h3 id="score" class="text-xl font-bold text-green-500">0%</h3>
+    </div>
+
+    <div class="bg-white p-4 shadow rounded">
+      <p>Alertes</p>
+      <h3 class="text-xl font-bold text-red-500">2</h3>
+    </div>
+  </div>
+</section>
+
+<!-- DECLARATION -->
+<section id="declaration" class="p-8 hidden section bg-white">
+  <h2 class="text-2xl font-bold mb-4">Déclaration fiscale</h2>
+
+  <select id="typeTaxe" class="border p-2 mb-4 w-full">
+    <option value="tva">TVA</option>
+    <option value="isb">ISB</option>
+    <option value="synthetique">Impôt synthétique</option>
+  </select>
+
+  <input id="ca" type="number" placeholder="Chiffre d'affaires"
+    class="border p-2 w-full mb-2">
+
+  <input id="charges" type="number" placeholder="Charges"
+    class="border p-2 w-full mb-2">
+
+  <button onclick="calculer()" class="bg-black text-white px-4 py-2 w-full">
+    Calculer l'impôt
+  </button>
+
+  <p class="mt-4 font-bold">Résultat : <span id="resultat">0</span> FCFA</p>
+</section>
+
+<!-- SIMULATION -->
+<section id="simulation" class="p-8 hidden section">
+  <h2 class="text-2xl font-bold mb-4">Simulation fiscale</h2>
+
+  <div class="bg-white p-4 shadow rounded">
+    <input id="simCA" type="number" placeholder="CA estimé"
+      class="border p-2 w-full mb-2">
+
+    <button onclick="simuler()" class="bg-blue-500 text-white px-4 py-2 w-full">
+      Simuler
+    </button>
+
+    <p class="mt-4">Impôt estimé : <span id="simResult">0</span> FCFA</p>
+  </div>
+</section>
+
+<!-- PAIEMENT -->
+<section id="paiement" class="p-8 hidden section bg-white">
+  <h2 class="text-2xl font-bold mb-4">Paiement</h2>
+
+  <button onclick="payer('mobile')" 
+    class="bg-green-500 text-white px-4 py-2 w-full mb-2">
+    Mobile Money
+  </button>
+
+  <button onclick="payer('banque')" 
+    class="bg-blue-500 text-white px-4 py-2 w-full">
+    Virement bancaire
+  </button>
+
+  <p id="paiementStatus" class="mt-4 font-bold"></p>
+</section>
+
+<!-- ARCHIVES -->
+<section id="archives" class="p-8 hidden section">
+  <h2 class="text-2xl font-bold mb-4">Historique</h2>
+
+  <table class="w-full bg-white shadow">
+    <thead>
+      <tr class="bg-gray-200">
+        <th class="p-2">Date</th>
+        <th class="p-2">Type</th>
+        <th class="p-2">Montant</th>
+        <th class="p-2">Statut</th>
+      </tr>
+    </thead>
+
+    <tbody id="historique"></tbody>
+  </table>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-black text-white text-center p-4">
+  © 2026 NigerTax Pro — By HAM Global Works
+</footer>
+
+<!-- JS -->
+<script src="script.js"></script>
+
+</body>
+</html>
