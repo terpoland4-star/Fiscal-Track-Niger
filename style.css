@@ -1,0 +1,250 @@
+/* =========================
+   🌍 THEME NIGER + AES
+========================= */
+
+:root {
+  --primary: #E67E22;     /* Orange Niger */
+  --secondary: #27AE60;   /* Vert Niger */
+  --dark: #1E1E1E;        /* Noir moderne */
+  --light: #F5F5F5;
+  --accent: #D4AF37;      /* Or (AES premium feel) */
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--light);
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--dark);
+  transition: all 0.3s ease;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+header h1 {
+  letter-spacing: 1px;
+}
+
+/* NAV BUTTONS */
+nav button {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+  position: relative;
+}
+
+/* Hover underline animation */
+nav button::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: white;
+  transition: 0.3s;
+}
+
+nav button:hover::after {
+  width: 100%;
+}
+
+nav button:hover {
+  color: var(--accent);
+}
+
+/* =========================
+   HERO
+========================= */
+
+section:first-of-type {
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* =========================
+   CARDS (Dashboard)
+========================= */
+
+.bg-white {
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+/* Hover lift effect */
+.bg-white:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Primary button */
+.bg-black {
+  background: var(--primary) !important;
+}
+
+.bg-black:hover {
+  background: #d35400 !important;
+  transform: scale(1.03);
+}
+
+/* Mobile Money */
+.bg-green-500 {
+  background: var(--secondary) !important;
+}
+
+.bg-green-500:hover {
+  background: #1e8449 !important;
+  transform: scale(1.03);
+}
+
+/* Bank */
+.bg-blue-500 {
+  background: var(--accent) !important;
+  color: black !important;
+}
+
+.bg-blue-500:hover {
+  background: #c9a227 !important;
+  transform: scale(1.03);
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+input, select {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: 0.3s;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 5px rgba(230, 126, 34, 0.5);
+}
+
+/* =========================
+   TABLE
+========================= */
+
+table {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+thead {
+  background: var(--secondary);
+  color: white;
+}
+
+tbody tr:hover {
+  background: rgba(230, 126, 34, 0.1);
+  transition: 0.2s;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  background: linear-gradient(90deg, var(--dark), #333);
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+/* Fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide in */
+.section {
+  animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Pulse alert */
+.text-red-500 {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+/* =========================
+   SCROLLBAR (moderne)
+========================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav {
+    margin-top: 10px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+}
